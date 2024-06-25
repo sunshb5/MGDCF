@@ -20,8 +20,13 @@ from mgdcf.utils.homo_adjacency import build_homo_adjs
 np.set_printoptions(precision=4)
 logging.basicConfig(format='%(asctime)s %(message)s\t', level=logging.INFO, stream=sys.stdout)
 
-
 def parse_arguments():
+    """
+    解析命令行参数。
+
+    返回:
+    - args: 解析后的参数对象。
+    """
     parser = ArgumentParser()
     parser.add_argument("method", type=str)
     parser.add_argument("--dataset", type=str)
@@ -44,13 +49,23 @@ def parse_arguments():
     logging.info(args)
     return args
 
-
 def setup_environment(args):
+    """
+    设置环境并加载数据集。
+
+    参数:
+    - args: 命令行参数对象。
+
+    返回:
+    - data_dict: 包含数据集信息的字典。
+    """
     os.environ["CUDA_VISIBLE_DEVICES"] = '0'
     return LightGCNDataset(args.dataset).load_data()
 
-
 class CollaborativeFilteringTask:
+    """
+    协同过滤任务类，包含模型构建、训练和评估方法。
+    """
     def __init__(self, data_dict, args):
         self.num_users = data_dict["num_users"]
         self.num_items = data_dict["num_items"]
@@ -63,6 +78,12 @@ class CollaborativeFilteringTask:
         self.args = args
 
     def get_model_and_forward(self):
+        """
+        根据方法名构建模型并返回前向传播函数。
+
+        返回:
+        - forward: 前向传播函数。
+        """
         if self.args.method in ["MF"]:
             return self.build_mf_model()
         elif self.args.method.startswith("Hetero") or self.args.method in ["LightGCN", "APPNP", "JKNet", "DropEdge"]:
@@ -73,6 +94,12 @@ class CollaborativeFilteringTask:
             raise ValueError(f"Invalid method name: {self.args.method}")
 
     def build_mf_model(self):
+        """
+        构建基于矩阵分解（MF）的模型。
+
+        返回:
+        - forward: 前向传播函数。
+        """
         user_embeddings = tf.Variable(
             tf.random.truncated_normal([self.num_users, self.args.emb_size], stddev=1.0 / np.sqrt(self.args.emb_size)))
         item_embeddings = tf.Variable(
@@ -88,6 +115,12 @@ class CollaborativeFilteringTask:
         return forward
 
     def build_hetero_model(self):
+        """
+        构建异质图神经网络模型。
+
+        返回:
+        - forward: 前向传播函数。
+        """
         virtual_graph = tfg.Graph(
             x=tf.Variable(
                 tf.random.truncated_normal([self.num_users + self.num_items, self.args.emb_size],
@@ -133,6 +166,12 @@ class CollaborativeFilteringTask:
         return forward
 
     def build_homo_model(self):
+        """
+        构建同质图神经网络模型。
+
+        返回:
+        - forward: 前向传播函数。
+        """
         user_embeddings = tf.Variable(
             tf.random.truncated_normal([self.num_users, self.args.emb_size], stddev=1.0 / np.sqrt(self.args.emb_size)))
         item_embeddings = tf.Variable(
@@ -185,6 +224,20 @@ class CollaborativeFilteringTask:
 
     @tf_utils.function
     def train(self, batch_user_indices, batch_item_indices, forward, optimizer):
+        """
+        训练函数，执行一次前向传播和反向传播。
+
+        参数:
+        - batch_user_indices: 批量用户索引。
+        - batch_item_indices: 批量物品索引。
+        - forward: 前向传播函数。
+        - optimizer: 优化器对象。
+
+        返回:
+        - loss: 训练损失。
+        - mf_losses: MF损失。
+        - l2_loss: L2正则化损失。
+        """
         batch_negative_item_indices = tf.random.uniform(
             [tf.shape(batch_item_indices)[0], self.args.num_negs],
              0, self.num_items, dtype=tf.int32
@@ -222,6 +275,9 @@ class CollaborativeFilteringTask:
         return loss, mf_losses, l2_loss
 
     def run(self):
+        """
+        执行训练和评估过程。
+        """
         time_stamp = int(time.time() * 1000)
         dataset_output_dir = os.path.join(self.args.output_dir, self.args.dataset)
         os.makedirs(dataset_output_dir, exist_ok=True)
@@ -277,9 +333,9 @@ class CollaborativeFilteringTask:
 
             print(f"epoch = {epoch}\tloss = {np.mean(step_losses):.4f}\tmf_loss = {np.mean(np.concatenate(step_mf_losses_list, axis=0)):.4f}\tl2_loss = {np.mean(step_l2_losses):.4f}\t{lr_status}\tepoch_time = {end_time - start_time:.4f}s")
 
-
 if __name__ == "__main__":
     args = parse_arguments()
     data_dict = setup_environment(args)
     task = CollaborativeFilteringTask(data_dict, args)
     task.run()
+
