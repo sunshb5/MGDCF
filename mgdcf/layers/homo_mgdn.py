@@ -6,15 +6,8 @@ from mgdcf.utils.normalized_factor import compute_normalized_denominator
 
 class HomoMGDN(tf.keras.Model):
 
-    def __init__(self,
-                 k=10,
-                 alpha=0.1,
-                 beta=0.9,
-                 x_drop_rate=0.0,
-                 edge_drop_rate=0.0,
-                 z_drop_rate=0.0,
-                 activation=None,
-                 kernel_regularizer=None, bias_regularizer=None, *args, **kwargs):
+    def __init__(self, k=10, alpha=0.1, beta=0.9, x_drop_rate=0.0, edge_drop_rate=0.0, 
+                 z_drop_rate=0.0, activation=None, kernel_regularizer=None, bias_regularizer=None, *args, **kwargs):
 
         super().__init__(*args, **kwargs)
         self.activation = activation
