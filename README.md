@@ -1,9 +1,29 @@
-# 项目介绍
-    本项目是针对代码工具链生成的DDS服务文件所建立的。
+<p align="center">
+<img src="MGDCF_LOGO.png" width="400"/>
+</p>
+
+
+# 项目介绍MGDCF
+    本项目主要是针对论文"[MGDCF: Distance Learning via Markov Graph Diffusion for Neural Collaborative Filtering](https://arxiv.org/abs/2204.02338)"的复现。
+    
+    
+    本仓库包含该论文的 TensorFlow 实现。
+
+## 论文链接Paper Links
+
++ Paper Access:
+    - **IEEE Xplore**: [https://ieeexplore.ieee.org/document/10384729](https://ieeexplore.ieee.org/document/10384729)
+    - **ArXiv**: [https://arxiv.org/abs/2204.02338](https://arxiv.org/abs/2204.02338)
  
-    能够将多个DDS服务文件进行合并，构建DDS基本服务端以及客户端程序框架。包含生成server.cpp、client.cpp、CMakeLists.txt
- 
-# 环境依赖
+# 环境依赖Requirements
+
++ Linux
++ Python 3.7
++ tensorflow == 2.7.0
++ tf_geometric == 0.1.5
++ tf_sparse == 0.0.17
++ grecx >= 0.0.6
++ tqdm=4.51.0
  
  
 # 目录结构描述
@@ -40,17 +60,37 @@
     ├── target              // 合成结果存放的文件夹
     
     └── temp                // 存放待合并的服务的服务文件夹
+
  
-# 使用说明
+# 使用说明Run MGDCF
+
+运行如下命令来执行MGDCF:
+```shell
+cd scripts
+sh ${DATASET}/$SCRIPT_NAME
+```
+例如:
+```shell
+cd scripts
+sh amazon-book/HeteroMGDCF_yelp.sh
+```
+
+
+
+# 引用Cite
+
+```
+@ARTICLE{10384729,
+  author={Jun Hu and Bryan Hooi and Shengsheng Qian and Quan Fang and Changsheng Xu},
+  journal={IEEE Transactions on Knowledge and Data Engineering}, 
+  title={MGDCF: Distance Learning via Markov Graph Diffusion for Neural Collaborative Filtering}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-16},
+  doi={10.1109/TKDE.2023.3348537}
+}
+```
  
- 
- 
-# 版本内容更新
-###### v1.0.0: 
-    1.实现gen文件的拷贝、合并
-    
-    2.实现common文件的合并
-    
-    3.实现指定版本的include、src、lib文件的拷贝
- 
+
  
