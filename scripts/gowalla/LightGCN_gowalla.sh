@@ -1,4 +1,4 @@
-cd ../../
+cd ..
 python -u cf_task_handle.py  \
        LightGCN --dataset light_gcn_gowalla \
         --emb_size 64 \
