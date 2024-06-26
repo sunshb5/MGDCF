@@ -1,6 +1,6 @@
 <p align="center">
-<img src="MGDCF_LOGO.png" width="400"/>
-</p>
+<!-- <img src="MGDCF_LOGO.png" width="400"/> -->
+<!-- </p> -->
 
 
 # 项目介绍
