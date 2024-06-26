@@ -25,6 +25,10 @@ def load_cache(path, func):
     返回:
     - data: 加载或生成的缓存数据。
     """
+    directory = os.path.dirname(path)
+    if not os.path.exists(directory):
+        os.makedirs(directory)  # 创建目录
+        
     if os.path.exists(path):
         with open(path, "rb") as f:
             return pickle.load(f)  # 加载已存在的缓存数据
