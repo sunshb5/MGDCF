@@ -28,23 +28,23 @@ def parse_arguments():
     - args: 解析后的参数对象。
     """
     parser = ArgumentParser()
-    parser.add_argument("method", type=str)
-    parser.add_argument("--dataset", type=str)
-    parser.add_argument("--emb_size", type=int, required=True)
-    parser.add_argument("--lr", type=float, required=True)
-    parser.add_argument("--lr_decay", type=float, required=True)
-    parser.add_argument("--z_l2_coef", type=float, required=True)
-    parser.add_argument("--num_negs", type=int, required=True)
-    parser.add_argument("--batch_size", type=int, required=True)
-    parser.add_argument("--num_epochs", type=int, required=True)
-    parser.add_argument("--output_dir", type=str, required=True)
-    parser.add_argument("--adj_drop_rate", type=float, required=False)
-    parser.add_argument("--alpha", type=float, required=False)
-    parser.add_argument("--beta", type=float, required=False)
-    parser.add_argument("--num_iter", type=int, required=False)
-    parser.add_argument("--x_drop_rate", type=float, required=False)
-    parser.add_argument("--z_drop_rate", type=float, required=False)
-    parser.add_argument("--edge_drop_rate", type=float, required=False)
+    parser.add_argument("method", type=str)  # 方法名称
+    parser.add_argument("--dataset", type=str)  # 数据集名称
+    parser.add_argument("--emb_size", type=int, required=True)  # 嵌入维度大小
+    parser.add_argument("--lr", type=float, required=True)  # 学习率
+    parser.add_argument("--lr_decay", type=float, required=True)  # 学习率衰减
+    parser.add_argument("--z_l2_coef", type=float, required=True)  # L2正则化系数
+    parser.add_argument("--num_negs", type=int, required=True)  # 负样本数量
+    parser.add_argument("--batch_size", type=int, required=True)  # 批量大小
+    parser.add_argument("--num_epochs", type=int, required=True)  # 训练轮数
+    parser.add_argument("--output_dir", type=str, required=True)  # 输出目录
+    parser.add_argument("--adj_drop_rate", type=float, required=False)  # 邻接矩阵丢弃率
+    parser.add_argument("--alpha", type=float, required=False)  # Alpha参数
+    parser.add_argument("--beta", type=float, required=False)  # Beta参数
+    parser.add_argument("--num_iter", type=int, required=False)  # 迭代次数
+    parser.add_argument("--x_drop_rate", type=float, required=False)  # X丢弃率
+    parser.add_argument("--z_drop_rate", type=float, required=False)  # Z丢弃率
+    parser.add_argument("--edge_drop_rate", type=float, required=False)  # 边丢弃率
     args = parser.parse_args()
     logging.info(args)
     return args
