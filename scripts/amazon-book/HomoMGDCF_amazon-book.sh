@@ -1,4 +1,4 @@
-cd ../../
+cd ..
 python -u cf_task_handle.py  \
   HomoMGDCF --dataset light_gcn_amazon-book \
         --emb_size 64 \
