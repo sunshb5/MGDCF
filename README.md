@@ -3,19 +3,21 @@
 </p>
 
 
-# 项目介绍MGDCF
-    本项目主要是针对论文"[MGDCF: Distance Learning via Markov Graph Diffusion for Neural Collaborative Filtering](https://arxiv.org/abs/2204.02338)"的复现。
-    
-    
-    本仓库包含该论文的 TensorFlow 实现。
+# 项目介绍
 
-## 论文链接Paper Links
+本项目主要是针对论文"[MGDCF: Distance Learning via Markov Graph Diffusion for Neural Collaborative Filtering](https://arxiv.org/abs/2204.02338)"的复现。并在原论文的基础上做出了以下两点创新：
++ 增加了LightGCN-InfoBPR, ... , 等模型实验对照组，以验证论文中提出的排序损失InfoBPR函数的泛化性；
++ 调整了InfoBPR
+    
+本仓库包含该论文的 TensorFlow 实现。
+
+# 论文链接
 
 + Paper Access:
     - **IEEE Xplore**: [https://ieeexplore.ieee.org/document/10384729](https://ieeexplore.ieee.org/document/10384729)
     - **ArXiv**: [https://arxiv.org/abs/2204.02338](https://arxiv.org/abs/2204.02338)
  
-# 环境依赖Requirements
+# 环境依赖
 
 + Linux
 + Python 3.7
@@ -62,9 +64,9 @@
     └── temp                // 存放待合并的服务的服务文件夹
 
  
-# 使用说明Run MGDCF
+# 使用说明
 
-运行如下命令来执行MGDCF:
+您可以运行如下命令来执行MGDCF:
 ```shell
 cd scripts
 sh ${DATASET}/$SCRIPT_NAME
@@ -77,7 +79,7 @@ sh amazon-book/HeteroMGDCF_yelp.sh
 
 
 
-# 引用Cite
+# Cite
 
 ```
 @ARTICLE{10384729,
