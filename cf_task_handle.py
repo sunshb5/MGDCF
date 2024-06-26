@@ -167,8 +167,7 @@ class CollaborativeFilteringTask:
 
     def build_homo_adjs(self):
         train_user_item_edges = np.array(self.train_user_item_edges)
-
-        adj_cache_path = os.path.join("cache", "{}_adj_{}.p".format(dataset, adj_drop_rate))
+        adj_cache_path = os.path.join("cache", f"{self.args.dataset}_adj_{self.args.adj_drop_rate}.p")
 
         def build_adjs_func():
             return build_homo_adjs(train_user_item_edges, self.num_users, self.num_items, adj_drop_rate=adj_drop_rate)
