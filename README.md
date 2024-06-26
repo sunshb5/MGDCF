@@ -37,13 +37,15 @@
 
  
 # 目录结构描述
-    ├── ReadMe.md           // 帮助文档
+    ├── ReadMe.md            // 帮助文档
     
-    ├── requirement.txt   // 环境依赖文件
+    ├── requirement.txt      // 环境依赖文件
+
+    ├── cf_task_handle.py    // 主函数文件，调用不同模型处理CF任务
     
-    ├── mgdcf             // MGDCF框架，包含同构MGDN、异构MGDN、部分GNN模型的实现以及用到的tools
+    ├── mgdcf                // MGDCF框架，包含同构MGDN、异构MGDN、部分GNN模型的实现以及用到的tools
     
-    │   ├── layers     // 包含处理CF任务的各种模型
+    │   ├── layers      // 包含处理CF任务的各种模型
     
     │       └── __init__.py
     
@@ -65,21 +67,19 @@
 
     │   └── cache.py        // 构建缓存的tool，加速任务
     
-    │       ├── arm64       // 支持arm64系统版本的lib文件夹
+    ├── scripts       // python运行脚本
     
-    │           ├── V1.0
+    │   ├── amazon-book
     
-    │           └── V......
+    │       └── ......
+
+    │   ├── gowalla
     
-    │       └── x86         // 支持x86系统版本的lib文件夹
+    │       └── ......
+
+    │   ├── yelp
     
-    │           ├── V1.0
-    
-    │           └── V......
-    
-    ├── target              // 合成结果存放的文件夹
-    
-    └── temp                // 存放待合并的服务的服务文件夹
+    │       └── ......
 
  
 # 使用说明
