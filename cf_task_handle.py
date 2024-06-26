@@ -170,7 +170,7 @@ class CollaborativeFilteringTask:
         adj_cache_path = os.path.join("cache", f"{self.args.dataset}_adj_{self.args.adj_drop_rate}.p")
 
         def build_adjs_func():
-            return build_homo_adjs(train_user_item_edges, self.num_users, self.num_items, adj_drop_rate=adj_drop_rate)
+            return build_homo_adjs(train_user_item_edges, self.num_users, self.num_items, adj_drop_rate=self.args.adj_drop_rate)
 
         user_user_adj, item_item_adj = load_cache(adj_cache_path, func=build_adjs_func)
 
