@@ -39,21 +39,31 @@
 # 目录结构描述
     ├── ReadMe.md           // 帮助文档
     
-    ├── requirement.txt   // 合成DDS的 python脚本文件
+    ├── requirement.txt   // 环境依赖文件
     
-    ├── DDScore             // DDS核心文件库，包含各版本的include、src、lib文件夹，方便合并
+    ├── mgdcf             // MGDCF框架，包含同构MGDN、异构MGDN、部分GNN模型的实现以及用到的tools
     
-    │   ├── include_src     // 包含各版本的include、src文件夹
+    │   ├── layers     // 包含处理CF任务的各种模型
     
-    │       ├── V1.0
+    │       └── __init__.py
     
-    │           ├── include
+    │       └── hetero_mgdn.py    // 同构MGDN模型
     
-    │           └── src
+    │       └── homo_mgdn.py      // 异构MGDN模型
     
-    │       └── V......
+    │       └── specific_gnn.py   // 其他部分GNN模型
+
+    │   ├── utils     // 包含模型用到的tools
     
-    │   └── lib             // 包含各版本的lib文件夹
+    │       └── __init__.py
+    
+    │       └── homo_adjacency.py      // 同构图邻接矩阵建立
+    
+    │       └── normalized_factor.py   // 计算MGDN模型归一化分母
+    
+    │   └── __init__.py
+
+    │   └── cache.py        //
     
     │       ├── arm64       // 支持arm64系统版本的lib文件夹
     
