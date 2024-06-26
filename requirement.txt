@@ -1,0 +1,5 @@
+tensorflow == 2.15.0
+tf_geometric == 0.1.6
+tf_sparse == 0.0.17
+grecx == 0.0.8
+tqdm=4.66.4
