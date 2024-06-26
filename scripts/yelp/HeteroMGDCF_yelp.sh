@@ -1,4 +1,4 @@
-cd ../../
+cd ..
 python -u cf_task_handle.py  \
  HeteroMGDCF --dataset light_gcn_yelp \
         --emb_size 64 \
