@@ -7,7 +7,7 @@
 
 本项目主要是针对论文"[MGDCF: Distance Learning via Markov Graph Diffusion for Neural Collaborative Filtering](https://arxiv.org/abs/2204.02338)"的复现。并在原论文的基础上做出了以下两点创新：
 + 增加了LightGCN-InfoBPR, ... , 等模型实验对照组，以验证论文中提出的排序损失InfoBPR函数的泛化性；
-+ 更改了InfoBPR函数计算时负样本的数量，以验证不同数据、模型上InfoBPR何时更有效，调整后在异构GNN、上有一定的提升。
++ 更改了计算InfoBPR函数时负样本数量，以验证不同数据、模型上InfoBPR何时更有效，调整后在异构GNN、...均上有一定的提升。
     
 本仓库实现了MGDCF的 TensorFlow 版本。
 
