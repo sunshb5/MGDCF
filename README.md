@@ -3,7 +3,7 @@
 <!-- </p> -->
 
 
-# 项目介绍
+# Introduction
 
 本项目主要是针对论文"[MGDCF: Distance Learning via Markov Graph Diffusion for Neural Collaborative Filtering](https://arxiv.org/abs/2204.02338)"的复现。并在原论文的基础上做出了以下两点创新：
 + 增加了LightGCN-InfoBPR, ... , 等模型实验对照组，以验证论文中提出的排序损失InfoBPR函数的泛化性；
@@ -14,7 +14,7 @@
 
 
 
-# 论文链接
+# Paper Links
 
 + Paper Access:
     - **IEEE Xplore**: [https://ieeexplore.ieee.org/document/10384729](https://ieeexplore.ieee.org/document/10384729)
@@ -23,7 +23,7 @@
 
 
  
-# 环境依赖
+# Requirements
 
 + Linux
 + Python 3.10.12
@@ -36,7 +36,8 @@
 
 
  
-# 目录结构描述
+# Directory Structure
+
     ├── ReadMe.md            // 帮助文档
     
     ├── requirement.txt      // 环境依赖文件
@@ -82,7 +83,7 @@
     │       └── ......
 
  
-# 使用说明
+# Run
 
 您可以运行如下命令来执行MGDCF:
 ```shell
