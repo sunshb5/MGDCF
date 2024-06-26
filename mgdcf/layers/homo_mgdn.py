@@ -71,7 +71,7 @@ class HomoMGDN(tf.keras.Model):
             edge_weight = None
 
         num_nodes = tfs.shape(x)[0]  # 获取节点数
-        sparse_adj = SparseAdj(edge_index, edge_weight, [num_nodes, num_nodes])  # 创建稀疏邻接矩阵对象
+        sparse_adj = tf.sparse.SparseTensor(edge_index, edge_weight, [num_nodes, num_nodes])  # 创建稀疏邻接矩阵对象
         normed_sparse_adj = gcn_norm_adj(sparse_adj, cache=cache) \
             .dropout(self.edge_drop_rate, training=training)  # 归一化稀疏邻接矩阵并进行 dropout
 
