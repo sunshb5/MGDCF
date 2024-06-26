@@ -165,6 +165,18 @@ class CollaborativeFilteringTask:
 
         return forward
 
+    def build_homo_adjs(self):
+        train_user_item_edges = np.array(self.train_user_item_edges)
+
+        adj_cache_path = os.path.join("cache", "{}_adj_{}.p".format(dataset, adj_drop_rate))
+
+        def build_adjs_func():
+            return build_homo_adjs(train_user_item_edges, self.num_users, self.num_items, adj_drop_rate=adj_drop_rate)
+
+        user_user_adj, item_item_adj = load_cache(adj_cache_path, func=build_adjs_func)
+
+        return user_user_adj, item_item_adj
+
     def build_homo_model(self):
         """
         构建同质图神经网络模型。
@@ -177,13 +189,7 @@ class CollaborativeFilteringTask:
         item_embeddings = tf.Variable(
             tf.random.truncated_normal([self.num_items, self.args.emb_size], stddev=1.0 / np.sqrt(self.args.emb_size)))
 
-        train_user_item_edges = np.array(self.train_user_item_edges)
-        adj_cache_path = os.path.join("cache", f"{self.args.dataset}_adj_{self.args.adj_drop_rate}.p")
-
-        def build_adjs_func():
-            return build_homo_adjs(train_user_item_edges, self.num_users, self.num_items,
-                                   adj_drop_rate=self.args.adj_drop_rate)
-        user_user_adj, item_item_adj = load_cache(adj_cache_path, func=build_adjs_func)
+        user_user_adj, item_item_adj = self.build_homo_adjs()
 
         user_user_edge_index = np.stack([user_user_adj.row, user_user_adj.col], axis=0)
         user_user_edge_weight = user_user_adj.data
