@@ -4,7 +4,7 @@
 
 # Introduction
 
-本项目主要是针对论文"[MGDCF: Distance Learning via Markov Graph Diffusion for Neural Collaborative Filtering](https://arxiv.org/abs/2204.02338)"的复现。并在原论文的基础上做出了以下两点创新：
+本项目主要是针对论文"[MGDCF: Distance Learning via Markov Graph Diffusion for Neural Collaborative Filtering](https://arxiv.org/abs/2204.02338)"的复现与改进。并在原论文的基础上做出了以下两点创新：
 + 增加了LightGCN-InfoBPR, DropEdge-InfoBPR 等模型实验对照组，以验证论文中提出的排序损失InfoBPR函数的泛化性；
 + 更改了计算InfoBPR函数时负样本的数量，以验证不同数据、模型上InfoBPR何时更有效，调整后在异构MGDN、同构MGDN上均有一定的提升。
     
