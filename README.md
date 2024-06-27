@@ -94,6 +94,10 @@ sh ${DATASET}/$SCRIPT_NAME
 cd scripts
 sh amazon-book/HeteroMGDCF_yelp.sh
 ```
+您也可以直接在命令行执行：
+```shell
+python -u 
+```
 
 
 
