@@ -96,7 +96,7 @@ sh amazon-book/HeteroMGDCF_yelp.sh
 ```
 您也可以直接在命令行执行：
 ```shell
-python -u 
+python -u cf_task_handle.py ${DATASET} ${Other parameters needed}
 ```
 
 
