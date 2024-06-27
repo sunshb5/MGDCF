@@ -12,7 +12,7 @@
 本仓库实现了MGDCF的 TensorFlow 版本。
 
 <p align="center">
-<img src=".\architecture.png" height = "360" alt="" align=center />
+<img src=".\architecture.png" height = "330" alt="" align=center />
 <br><br>
 <b>Figure 1.</b> Overall Framework of MGDCF.
 </p>
