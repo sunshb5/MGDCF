@@ -14,7 +14,7 @@
 <p align="center">
 <img src=".\architecture.png" height = "360" alt="" align=center />
 <br><br>
-<b>Figure 1.</b> The architecture of Informer.
+<b>Figure 1.</b> Overall Framework of MGDCF.
 </p>
 
 
