@@ -11,6 +11,11 @@
     
 本仓库实现了MGDCF的 TensorFlow 版本。
 
+<p align="center">
+<img src=".\architecture.png" height = "360" alt="" align=center />
+<br><br>
+<b>Figure 1.</b> The architecture of Informer.
+</p>
 
 
 
@@ -99,6 +104,8 @@ sh amazon-book/HeteroMGDCF_yelp.sh
 ```shell
 python -u cf_task_handle.py ${DATASET} ${Other parameters needed}
 ```
+也可以在colab平台的jupyter notebook上执行(其T4 GPU运行时满足本项目的大部分环境)[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1SAbCp3spIATpNhGD3pTJuFhm7L2EdKqR#scrollTo=N-De8-JcaSb7)
+
 
 
 
